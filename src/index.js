@@ -10,9 +10,9 @@ import { Provider } from 'react-redux';
 
 //reducer....
 const feedbackReducer = ( state = {
-                                feeling: 0,
-                                understanding: 0,
-                                support: 0,
+                                feeling: '',
+                                understanding: '',
+                                support: '',
                                 comments: ''
     }, action ) => {
 
@@ -32,6 +32,12 @@ const feedbackReducer = ( state = {
             return state = {
                 ...state,
                 support: action.payload
+            };
+        }
+        if(action.type === 'ADD_COMMENTS'){
+            return state = {
+                ...state,
+                comments: action.payload
             };
         }
         

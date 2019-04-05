@@ -18,11 +18,16 @@ class Supported extends Component {
 
     handleSubmit = () => {
         console.log( `in handleSubmit...` );
-        
-        const action = { type: 'ADD_SUPPORT', payload: this.state.support };
-        this.props.dispatch( action );
 
-        this.props.history.push( '/comments' );
+        // keeping user from moving forward without input values
+        if( this.state.support !== '' ){
+            const action = { type: 'ADD_SUPPORT', payload: this.state.support };
+            this.props.dispatch( action );
+
+            this.props.history.push( '/comments' );
+        } else {
+            alert( `Please select a number between 1 and 5.`);
+        }
     }
 
     render() {

@@ -22,7 +22,6 @@ class Comments extends Component {
         const action = { type: 'ADD_COMMENTS', payload: this.state.comments };
         this.props.dispatch( action );
 
-        this.props.history.push( '/' );
     }
 
     render() {
@@ -33,7 +32,7 @@ class Comments extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" 
                             onChange={this.handleChange} />
-                    <button type="submit">Next</button>
+                    <button type="submit">Submit Comments</button>
                 </form>
             </div>
         );
