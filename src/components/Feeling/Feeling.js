@@ -16,6 +16,15 @@ class Feeling extends Component {
         })
     }
 
+    handleSubmit = () => {
+        console.log( `in handleSubmit...` );
+        
+        const action = { type: 'ADD_FEELING', payload: this.state };
+        this.props.dispatch( action );
+
+        this.props.history.push( '/understand' );
+    }
+
     render() {
         return(
             <div>
