@@ -19,10 +19,15 @@ class Understanding extends Component {
     handleSubmit = () => {
         console.log( `in handleSubmit...` );
         
-        const action = { type: 'ADD_UNDERSTANDING', payload: this.state.understanding };
-        this.props.dispatch( action );
 
-        this.props.history.push( '/support' );
+        if( this.state.understanding !== '' ){
+            const action = { type: 'ADD_UNDERSTANDING', payload: this.state.understanding };
+            this.props.dispatch( action );
+
+            this.props.history.push( '/support' );
+        }else {
+            alert( `Please select a number between 1 and 5.`);
+        }
     }
 
 
