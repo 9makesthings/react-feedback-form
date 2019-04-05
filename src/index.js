@@ -35,7 +35,6 @@ const feedbackReducer = ( state = {
             };
         }
         
-        
         return state;
 }
 

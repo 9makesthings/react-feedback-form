@@ -10,6 +10,19 @@ class Comments extends Component {
     handleChange = (event) => {
         console.log( `in handleChange...`, event.target.value );
         
+        this.setState({
+            ...this.state,
+            comments: event.target.value,
+        });
+    }
+
+    handleSubmit = () => {
+        console.log( `in handleSubmit...` );
+        
+        const action = { type: 'ADD_COMMENTS', payload: this.state.comments };
+        this.props.dispatch( action );
+
+        this.props.history.push( '/' );
     }
 
     render() {
@@ -20,6 +33,7 @@ class Comments extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" 
                             onChange={this.handleChange} />
+                    <button type="submit">Next</button>
                 </form>
             </div>
         );
