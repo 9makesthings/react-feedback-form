@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
-class Feeling extends Component {
+class Understanding extends Component {
 
     state = {
-        feeling: 0
+        understanding: 0
     }
 
     handleChange = (event) => {
@@ -12,25 +12,26 @@ class Feeling extends Component {
         
         this.setState({
             ...this.state,
-            feeling: event.target.value,
+            understanding: event.target.value,
         })
     }
 
     handleSubmit = () => {
         console.log( `in handleSubmit...` );
         
-        const action = { type: 'ADD_FEELING', payload: this.state.feeling };
+        const action = { type: 'ADD_UNDERSTANDING', payload: this.state.understanding };
         this.props.dispatch( action );
 
-        this.props.history.push( '/understanding' );
+        this.props.history.push( '/supported' );
     }
+
 
     render() {
         return(
             <div>
-                <h2>How are you feeling today?</h2>
+                <h2>How well are you understanding the content?</h2>
                 <form onSubmit={this.handleSubmit} >
-                    <input type="number" name="feeling"
+                    <input type="number" name="understanding"
                             min="1" max="5"
                             onChange={this.handleChange} />
 
@@ -41,4 +42,4 @@ class Feeling extends Component {
     }
 }
 
-export default connect()(Feeling);
+export default connect()(Understanding);

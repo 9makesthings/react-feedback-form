@@ -9,13 +9,27 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
 //reducer....
-const feedbackReducer = ( state = {}, action ) => {
+const feedbackReducer = ( state = {
+                                feeling: 0,
+                                understanding: 0,
+                                supported: 0,
+                                comments: ''
+    }, action ) => {
 
-    if(action.type === 'ADD_FEELING'){
-        return state.feeling = action.payload;
-    }
-    
-    return state;
+        if(action.type === 'ADD_FEELING'){
+            return state = {
+                ...state,
+                feeling: action.payload
+            };
+        }
+        if(action.type === 'ADD_UNDERSTANDING'){
+            return state = {
+                ...state,
+                understanding: action.payload
+            };
+        }
+        
+        return state;
 }
 
 
