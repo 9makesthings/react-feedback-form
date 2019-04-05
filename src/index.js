@@ -12,7 +12,7 @@ import { Provider } from 'react-redux';
 const feedbackReducer = ( state = {
                                 feeling: 0,
                                 understanding: 0,
-                                supported: 0,
+                                support: 0,
                                 comments: ''
     }, action ) => {
 
@@ -28,6 +28,13 @@ const feedbackReducer = ( state = {
                 understanding: action.payload
             };
         }
+        if(action.type === 'ADD_SUPPORT'){
+            return state = {
+                ...state,
+                support: action.payload
+            };
+        }
+        
         
         return state;
 }

@@ -22,7 +22,7 @@ class Understanding extends Component {
         const action = { type: 'ADD_UNDERSTANDING', payload: this.state.understanding };
         this.props.dispatch( action );
 
-        this.props.history.push( '/supported' );
+        this.props.history.push( '/support' );
     }
 
 
