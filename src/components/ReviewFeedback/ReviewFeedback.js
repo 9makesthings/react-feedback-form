@@ -3,17 +3,28 @@ import { connect } from 'react-redux';
 
 class ReviewFeedback extends Component {
 
-
     showSubmitButton = () => {
         let feedback = this.props.reduxState.feedbackReducer;
         // conditionally render button based on whether feedback has been completed
         if( feedback.comments !== '' ){
-            return <button>Submit Feedback</button>;
+            return <button onClick={this.handleSubmit}>Submit Feedback</button>;
         } else {
             return <button>Incomplete</button>;
         }
-    }
+    } 
 
+    handleSubmit = () => {
+        const feedback = this.props.reduxState.feedbackReducer;
+
+        const all = {
+            feeling: feedback.feeling,
+            understanding: feedback.understanding,
+            support: feedback.support,
+            comments: feedback.comments
+        };
+
+        this.props.submitFeedback( all );
+    }
 
 
     render() {
@@ -21,7 +32,7 @@ class ReviewFeedback extends Component {
             <div>
                 <h2>Review Your Feedback</h2>
                 
-                <p>Feelings: {this.props.reduxState.feedbackReducer.feeling}</p>
+                <p>Feeling: {this.props.reduxState.feedbackReducer.feeling}</p>
                 <p>Understanding: {this.props.reduxState.feedbackReducer.understanding}</p>
                 <p>Support: {this.props.reduxState.feedbackReducer.support}</p>
                 <p>Comments: {this.props.reduxState.feedbackReducer.comments}</p>

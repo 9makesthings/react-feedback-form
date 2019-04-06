@@ -13,6 +13,12 @@ import Comments from '../Comments/Comments';
 import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
 
 class App extends Component {
+
+  submitFeedback = (feedback) => {
+    console.log( `in submitFeedback...`, feedback );
+    
+  } 
+
   render() {
     return (
       <Router>
@@ -31,7 +37,7 @@ class App extends Component {
             <Route path="/comments" component={Comments} />
           </div>
 
-          <ReviewFeedback />
+          <ReviewFeedback submitFeedback={this.submitFeedback} />
 
         </div>
       </Router>
