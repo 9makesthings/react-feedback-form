@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import './App.css';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
@@ -8,6 +8,7 @@ import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
 import Supported from '../Supported/Supported';
 import Comments from '../Comments/Comments';
+import Success from '../Success/Success';
 
 // Static component:
 import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
@@ -16,7 +17,20 @@ class App extends Component {
 
   submitFeedback = (feedback) => {
     console.log( `in submitFeedback...`, feedback );
-    
+
+    axios({
+      method: 'POST',
+      url: '/feedback',
+      data: feedback
+    })
+    .then( (response) => {
+      console.log( `YAY! Added feedback.` );
+      // empty reducers, head to thank you page!
+    })
+    .catch( (error) => {
+      console.log( `Error adding feedback.`, error );
+      alert( `Could not submit feedback. Try again later.`);
+    })
   } 
 
   render() {
@@ -35,6 +49,7 @@ class App extends Component {
             <Route path="/understanding" component={Understanding} />
             <Route path="/support" component={Supported} />
             <Route path="/comments" component={Comments} />
+            <Route path="/success" component={Success} />
           </div>
 
           <ReviewFeedback submitFeedback={this.submitFeedback} />

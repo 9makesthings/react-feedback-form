@@ -16,14 +16,7 @@ class ReviewFeedback extends Component {
     handleSubmit = () => {
         const feedback = this.props.reduxState.feedbackReducer;
 
-        const all = {
-            feeling: feedback.feeling,
-            understanding: feedback.understanding,
-            support: feedback.support,
-            comments: feedback.comments
-        };
-
-        this.props.submitFeedback( all );
+        this.props.submitFeedback( feedback );
     }
 
 
