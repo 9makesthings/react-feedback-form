@@ -4,7 +4,7 @@ class Success extends Component {
 
     handleClick = () => {
         console.log( `in handleClick...` );
-        
+        this.props.history.push( '/' );
     }
 
     render() {

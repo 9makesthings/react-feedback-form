@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class ReviewFeedback extends Component {
 
@@ -15,8 +16,10 @@ class ReviewFeedback extends Component {
 
     handleSubmit = () => {
         const feedback = this.props.reduxState.feedbackReducer;
-
+        // sending data to axios post on App.js
         this.props.submitFeedback( feedback );
+        // head to thank you page!
+        this.props.history.push( '/success' );
     }
 
 
@@ -41,4 +44,4 @@ const mapReduxStateToProps = (reduxState) => ({
     reduxState,
 });
 
-export default connect(mapReduxStateToProps)(ReviewFeedback);
+export default connect(mapReduxStateToProps)(withRouter(ReviewFeedback));

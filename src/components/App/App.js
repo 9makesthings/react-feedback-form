@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import { HashRouter as Router, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 // Route components:
 import Feeling from '../Feeling/Feeling';
@@ -25,7 +26,10 @@ class App extends Component {
     })
     .then( (response) => {
       console.log( `YAY! Added feedback.` );
-      // empty reducers, head to thank you page!
+      // empty reducers 
+      const action = { type: 'EMPTY_STATE' };
+      this.props.dispatch( action );
+
     })
     .catch( (error) => {
       console.log( `Error adding feedback.`, error );
@@ -60,4 +64,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);
