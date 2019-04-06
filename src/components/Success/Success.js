@@ -13,6 +13,7 @@ class Success extends Component {
                 <h2>Thank You!</h2>
 
                 <button onClick={this.handleClick}>Leave New Feedback</button>
+
             </div>
         );
     }

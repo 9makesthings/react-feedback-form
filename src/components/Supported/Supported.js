@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
 
 class Supported extends Component {
 
@@ -41,6 +42,9 @@ class Supported extends Component {
 
                     <button type="submit">Next</button>
                 </form>
+
+                <br/>
+                <ReviewFeedback />
             </div>
         );
     }

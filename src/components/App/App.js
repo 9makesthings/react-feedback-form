@@ -37,6 +37,10 @@ class App extends Component {
     })
   } 
 
+  // showReview = () => {
+  //   if()
+  // }
+
   render() {
     return (
       <Router>
@@ -53,10 +57,10 @@ class App extends Component {
             <Route path="/understanding" component={Understanding} />
             <Route path="/support" component={Supported} />
             <Route path="/comments" component={Comments} />
+            <Route path="/review" render={(props) => <ReviewFeedback {...props} submitFeedback={this.submitFeedback} />} />
             <Route path="/success" component={Success} />
           </div>
 
-          <ReviewFeedback submitFeedback={this.submitFeedback} />
 
         </div>
       </Router>

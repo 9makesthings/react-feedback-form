@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
 
 class Comments extends Component {
 
@@ -22,6 +23,7 @@ class Comments extends Component {
         const action = { type: 'ADD_COMMENTS', payload: this.state.comments };
         this.props.dispatch( action );
 
+        this.props.history.push( '/review' );
     }
 
     render() {
@@ -34,6 +36,9 @@ class Comments extends Component {
                             onChange={this.handleChange} />
                     <button type="submit">Submit Comments</button>
                 </form>
+
+                <br/>
+                <ReviewFeedback />
             </div>
         );
     }
