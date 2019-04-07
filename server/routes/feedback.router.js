@@ -3,6 +3,22 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
+router.get( '/', (req, res) => {
+    console.log( `in router.get...` );
+    
+    let sqlText = `SELECT * FROM "feedback" ORDER BY "id";`;
+
+    pool.query( sqlText )
+        .then( (result) => {
+            console.log( `GET successful!`, result.rows );
+            res.send(result.rows);
+        })
+        .catch( (error) => {
+            console.log( `Error getting feedback from DB.`, error );
+            res.sendStatus(500);
+        });
+})
+
 router.post( '/', (req, res) => {
     const feedback = req.body;
     console.log( `in router.post...`, feedback );
