@@ -56,6 +56,10 @@ class App extends Component {
     })
   }
 
+  componentDidMount() {
+    this.getFeedback();
+  }
+
   render() {
     return (
       <Router>
