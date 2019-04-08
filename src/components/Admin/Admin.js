@@ -1,11 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class Admin extends Component {
 
     deleteFeedback = (event) => {
         console.log( `in deleteFeedback...` );
+
+        // TODO!!! Validate before deleting feedback.
+        // TODO!!! Refresh GET request after deleting
         
+        let id = event.target.value;
+        console.log( `id:`, id );
+        
+        axios({
+            method: 'DELETE',
+            url: `/feedback/${id}`
+        })
+        .then( (response) => {
+            console.log( `Deleted feedback item! Yay!` );
+            // need to re-get all feedback!
+        })
+        .catch( (error) => {
+            console.log( `Could not delete feedback.`, error );
+            alert( `Sorry, could not delete feedback. Try again later.` );
+        })
     }
     
 
@@ -33,7 +52,7 @@ class Admin extends Component {
                                     <td>{feedback.support}</td>
                                     <td>{feedback.comments}</td>
                                     <td>
-                                        <button onClick={this.deleteFeedback}>X</button>
+                                        <button onClick={this.deleteFeedback} value={feedback.id}>X</button>
                                     </td>
                                 </tr>
                             )}
