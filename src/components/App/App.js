@@ -10,6 +10,7 @@ import Understanding from '../Understanding/Understanding';
 import Supported from '../Supported/Supported';
 import Comments from '../Comments/Comments';
 import Success from '../Success/Success';
+import Admin from '../Admin/Admin';
 
 // Static component:
 import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
@@ -37,9 +38,27 @@ class App extends Component {
     })
   } 
 
-  // showReview = () => {
-  //   if()
-  // }
+  getFeedback = () => {
+    console.log( `in getFeedback...` );
+    
+    axios({
+      method: 'GET',
+      url: '/feedback'
+    })
+    .then( (response) => {
+      console.log( `Got feedback data from server!` );
+      const action = { type: 'GET_FEEDBACK', payload: response.data };
+      this.props.dispatch( action );
+    })
+    .catch( (error) => {
+      console.log( `Error getting feedback.`, error );
+      alert( `Sorry, couldn't get feedback data. Try again later.` );
+    })
+  }
+
+  componentDidMount() {
+    this.getFeedback();
+  }
 
   render() {
     return (
@@ -59,6 +78,8 @@ class App extends Component {
             <Route path="/comments" component={Comments} />
             <Route path="/review" render={(props) => <ReviewFeedback {...props} submitFeedback={this.submitFeedback} />} />
             <Route path="/success" component={Success} />
+
+            <Route path="/admin" render={(props) => <Admin {...props} getFeedback={this.getFeedback}/>}  />
           </div>
 
 
