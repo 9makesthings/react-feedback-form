@@ -1,4 +1,8 @@
 import React, {Component} from 'react';
+// Material UI imports
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
 
 class Success extends Component {
 
@@ -10,13 +14,15 @@ class Success extends Component {
     render() {
         return(
             <div>
-                <h2>Thank You!</h2>
+                <Card className="card" >
+                    <h2>Thank You!</h2>
 
-                <button onClick={this.handleClick}>Leave New Feedback</button>
-
+                    <Button size="small" variant="contained" color="primary" 
+                            onClick={this.handleClick}>Leave New Feedback</Button>
+                </Card>
             </div>
         );
     }
 }
 
-export default Success;
+export default withStyles()(Success);

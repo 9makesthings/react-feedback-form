@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import '../App/App.css';
+// Material UI imports
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 class Admin extends Component {
 
@@ -30,33 +39,36 @@ class Admin extends Component {
     render() {
         return(
             <div>
-                <h2>Admin stuff</h2>
+                <Card className="card" >
+                    <h2>Admin stuff</h2>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Feeling</th>
-                            <th>Comprehension</th>
-                            <th>Support</th>
-                            <th>Comments</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
+                    <Table className="adminTable" >
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Feeling</TableCell>
+                                <TableCell>Comprehension</TableCell>
+                                <TableCell>Support</TableCell>
+                                <TableCell>Comments</TableCell>
+                                <TableCell>Delete</TableCell>
+                            </TableRow>
+                        </TableHead>
 
-                    <tbody>
-                        {this.props.reduxState.storeFeedbackReducer.map( feedback => 
-                                <tr key={feedback.id}>
-                                    <td>{feedback.feeling}</td>
-                                    <td>{feedback.understanding}</td>
-                                    <td>{feedback.support}</td>
-                                    <td>{feedback.comments}</td>
-                                    <td>
-                                        <button onClick={this.deleteFeedback} value={feedback.id}>X</button>
-                                    </td>
-                                </tr>
-                            )}
-                    </tbody>
-                </table>
+                        <TableBody>
+                            {this.props.reduxState.storeFeedbackReducer.map( feedback => 
+                                    <TableRow key={feedback.id}>
+                                        <TableCell>{feedback.feeling}</TableCell>
+                                        <TableCell>{feedback.understanding}</TableCell>
+                                        <TableCell>{feedback.support}</TableCell>
+                                        <TableCell>{feedback.comments}</TableCell>
+                                        <TableCell>
+                                            <Button size="small" variant="contained" color="secondary"
+                                                    onClick={this.deleteFeedback} value={feedback.id}>X</Button>
+                                        </TableCell>
+                                    </TableRow>
+                                )}
+                        </TableBody>
+                    </Table>
+                </Card>
             </div>
         );
     }

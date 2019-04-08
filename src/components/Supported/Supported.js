@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
+import '../App/App.css';
+// Material UI imports
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
 
 class Supported extends Component {
 
@@ -34,14 +38,17 @@ class Supported extends Component {
     render() {
         return(
             <div>
-                <h2>How well are you being supported?</h2>
-                <form onSubmit={this.handleSubmit} >
-                    <input type="number" name="support"
-                            min="1" max="5"
-                            onChange={this.handleChange} />
+                <Card className="card" >
+                    <h2>How well are you being supported?</h2>
+                    <form onSubmit={this.handleSubmit} >
+                        <input type="number" name="support"
+                                min="1" max="5"
+                                onChange={this.handleChange} />
 
-                    <button type="submit">Next</button>
-                </form>
+                        <Button size="small" variant="contained" color="primary" 
+                                type="submit">Next</Button>
+                    </form>
+                </Card>
 
                 <br/>
                 <ReviewFeedback />

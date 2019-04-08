@@ -19,3 +19,28 @@
 .App-intro {
   font-size: large;
 }
+
+.card {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  padding-top: 10px;
+}
+
+.adminTable {
+  margin: auto;
+  width: 70%;
+  padding: 10px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.adminTable.thead.tr.th {
+  width: 100px;
+  /* fix this... */
+}
+
+.reviewTable {
+  margin: auto;
+  max-width: 300px;
+}

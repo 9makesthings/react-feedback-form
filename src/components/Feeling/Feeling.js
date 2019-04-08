@@ -1,35 +1,11 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
-import './Feeling.css';
+import '../App/App.css';
 // Material UI imports
-import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 
-
-const styles = {
-    card: {
-      minWidth: 275,
-    },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
-    title: {
-      fontSize: 14,
-    },
-    pos: {
-      marginBottom: 12,
-    },
-    button: {
-      margin: 10,
-    },
-    input: {
-      display: 'none',
-    },
-  };
 
 class Feeling extends Component {
 
@@ -82,4 +58,4 @@ class Feeling extends Component {
     }
 }
 
-export default connect()(withStyles(styles)(Feeling));
+export default connect()(Feeling);
