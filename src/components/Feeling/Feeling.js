@@ -1,6 +1,35 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
+import './Feeling.css';
+// Material UI imports
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
+
+
+const styles = {
+    card: {
+      minWidth: 275,
+    },
+    bullet: {
+      display: 'inline-block',
+      margin: '0 2px',
+      transform: 'scale(0.8)',
+    },
+    title: {
+      fontSize: 14,
+    },
+    pos: {
+      marginBottom: 12,
+    },
+    button: {
+      margin: 10,
+    },
+    input: {
+      display: 'none',
+    },
+  };
 
 class Feeling extends Component {
 
@@ -34,14 +63,17 @@ class Feeling extends Component {
     render() {
         return(
             <div>
-                <h2>How are you feeling today?</h2>
-                <form onSubmit={this.handleSubmit} >
-                    <input type="number" name="feeling"
-                            min="1" max="5"
-                            onChange={this.handleChange} />
+                <Card className="card">
+                    <h2>How are you feeling today?</h2>
+                    <form onSubmit={this.handleSubmit} >
+                        <input type="number" name="feeling"
+                                min="1" max="5"
+                                onChange={this.handleChange} />
 
-                    <button type="submit">Next</button>
-                </form>
+                        <Button size="small" variant="contained" color="primary" type="submit">Next</Button>
+                        <br/>
+                    </form>
+                </Card>
 
                 <br/>
                  <ReviewFeedback />
@@ -50,4 +82,4 @@ class Feeling extends Component {
     }
 }
 
-export default connect()(Feeling);
+export default connect()(withStyles(styles)(Feeling));
