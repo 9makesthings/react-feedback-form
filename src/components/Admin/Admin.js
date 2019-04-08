@@ -8,7 +8,6 @@ class Admin extends Component {
         console.log( `in deleteFeedback...` );
 
         // TODO!!! Validate before deleting feedback.
-        // TODO!!! Refresh GET request after deleting
         
         let id = event.target.value;
         console.log( `id:`, id );
@@ -19,7 +18,7 @@ class Admin extends Component {
         })
         .then( (response) => {
             console.log( `Deleted feedback item! Yay!` );
-            // need to re-get all feedback!
+            this.props.getFeedback();
         })
         .catch( (error) => {
             console.log( `Could not delete feedback.`, error );

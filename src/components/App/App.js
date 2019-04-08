@@ -79,7 +79,7 @@ class App extends Component {
             <Route path="/review" render={(props) => <ReviewFeedback {...props} submitFeedback={this.submitFeedback} />} />
             <Route path="/success" component={Success} />
 
-            <Route path="/admin" component={Admin} />
+            <Route path="/admin" render={(props) => <Admin {...props} getFeedback={this.getFeedback}/>}  />
           </div>
 
 
