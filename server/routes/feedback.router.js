@@ -3,6 +3,22 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
+router.get( '/', (req, res) => {
+    console.log( `in router.get...` );
+    
+    let sqlText = `SELECT * FROM "feedback" ORDER BY "id" DESC;`;
+
+    pool.query( sqlText )
+        .then( (result) => {
+            console.log( `GET successful!`, result.rows );
+            res.send(result.rows);
+        })
+        .catch( (error) => {
+            console.log( `Error getting feedback from DB.`, error );
+            res.sendStatus(500);
+        });
+})
+
 router.post( '/', (req, res) => {
     const feedback = req.body;
     console.log( `in router.post...`, feedback );
@@ -17,6 +33,21 @@ router.post( '/', (req, res) => {
         })
         .catch( (error) => {
             console.log( `Could not add feedback to DB`, error );
+            res.sendStatus(500);
+        })
+})
+
+router.delete( '/:id', (req, res) => {
+    let feedbackId = req.params.id;
+
+    let sqlText = `DELETE FROM "feedback" WHERE "id" = $1;`;
+
+    pool.query( sqlText, [feedbackId] )
+        .then( (response) =>{
+            res.sendStatus(200);
+        })
+        .catch( (error) => {
+            console.log( `Could not delete feedback.`, error );
             res.sendStatus(500);
         })
 })
