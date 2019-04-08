@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 
 class Admin extends Component {
 
+    deleteFeedback = (event) => {
+        console.log( `in deleteFeedback...` );
+        
+    }
     
 
     render() {
@@ -29,7 +33,7 @@ class Admin extends Component {
                                     <td>{feedback.support}</td>
                                     <td>{feedback.comments}</td>
                                     <td>
-                                        <button>X</button>
+                                        <button onClick={this.deleteFeedback}>X</button>
                                     </td>
                                 </tr>
                             )}
