@@ -5,6 +5,22 @@ import '../App/App.css';
 // Material UI imports
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
+import Radio from '@material-ui/core/Radio';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
+    },
+    button: {
+      margin: theme.spacing.unit,
+    },
+  });
 
 class Understanding extends Component {
 
@@ -12,14 +28,9 @@ class Understanding extends Component {
         understanding: 0
     }
 
-    handleChange = (event) => {
-        console.log( `in handleChange...`, this.state );
-        
-        this.setState({
-            ...this.state,
-            understanding: event.target.value,
-        })
-    }
+    handleChange = event => {
+        this.setState({ understanding: event.target.value });
+        };
 
     handleSubmit = () => {
         console.log( `in handleSubmit...` );
@@ -37,16 +48,57 @@ class Understanding extends Component {
 
 
     render() {
+        const {classes} = this.props;
+
         return(
             <div>
                 <Card className="card" >
                     <h2>How well are you understanding the content?</h2>
                     <form onSubmit={this.handleSubmit} >
-                        <input type="number" name="understanding"
-                                min="1" max="5"
-                                onChange={this.handleChange} />
+                        
+                        <div className="scale" >
+                            <i className="material-icons large" >help_outline</i>
 
-                        <Button size="small" variant="contained" color="primary" type="submit">Next</Button>
+                            <div className="radio" >
+                                <Radio
+                                checked={this.state.understanding === '1'}
+                                onChange={this.handleChange}
+                                value="1"
+                                aria-label="1"
+                                />
+                                <Radio
+                                checked={this.state.understanding === '2' }
+                                onChange={this.handleChange}
+                                value="2"
+                                aria-label="2"
+                                />
+                                <Radio
+                                checked={this.state.understanding === '3'}
+                                onChange={this.handleChange}
+                                value="3"
+                                aria-label="3"
+                                />
+                                <Radio
+                                checked={this.state.understanding === '4'}
+                                onChange={this.handleChange}
+                                value="4"
+                                aria-label="4"
+                                />
+                                <Radio
+                                checked={this.state.understanding === '5'}
+                                onChange={this.handleChange}
+                                value="5"
+                                aria-label="5"
+                                />
+                            </div>
+
+                            <i className="material-icons large" >school</i>
+                        </div>
+
+                        <br/>
+
+                        <Button className={classes.button} size="medium" variant="contained" color="primary" type="submit">Next</Button>
+                        <br/>
                     </form>
                 </Card>
 
@@ -57,4 +109,4 @@ class Understanding extends Component {
     }
 }
 
-export default connect()(Understanding);
+export default connect()(withStyles(styles)(Understanding));

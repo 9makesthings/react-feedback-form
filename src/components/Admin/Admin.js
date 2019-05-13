@@ -11,6 +11,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteTwoTone';
+
 class Admin extends Component {
 
     deleteFeedback = (event) => {
@@ -61,8 +63,12 @@ class Admin extends Component {
                                         <TableCell>{feedback.support}</TableCell>
                                         <TableCell>{feedback.comments}</TableCell>
                                         <TableCell>
-                                            <Button size="small" variant="contained" color="secondary"
-                                                    onClick={this.deleteFeedback} value={feedback.id}>X</Button>
+                                            <Button size="small" color="primary.dark"
+                                                        className="deleteButton"
+                                                        onClick={this.deleteFeedback} value={feedback.id}>   
+                                                <DeleteOutlinedIcon 
+                                                        className="deleteButton" />
+                                            </Button>
                                         </TableCell>
                                     </TableRow>
                                 )}

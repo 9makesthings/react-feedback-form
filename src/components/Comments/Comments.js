@@ -5,30 +5,20 @@ import '../App/App.css';
 // Material UI imports
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
 
-
-// const styles = {
-//     card: {
-//       minWidth: 275,
-//     },
-//     bullet: {
-//       display: 'inline-block',
-//       margin: '0 2px',
-//       transform: 'scale(0.8)',
-//     },
-//     title: {
-//       fontSize: 14,
-//     },
-//     pos: {
-//       marginBottom: 12,
-//     },
-//     button: {
-//       margin: 10,
-//     },
-//     input: {
-//       display: 'none',
-//     },
-//   };
+const styles = theme => ({
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
+      marginBottom: 10,
+      width: 600,
+    },
+    button: {
+      margin: 10,
+    },
+  });
 
 class Comments extends Component {
 
@@ -55,15 +45,20 @@ class Comments extends Component {
     }
 
     render() {
+        const {classes} = this.props;
+
         return(
             <div>
                 <Card className="card">
-                    <h2>Comments!</h2>
+                    <h2>Leave a comment</h2>
 
                     <form onSubmit={this.handleSubmit}>
-                        <input type="text" 
+                        <TextField multiline variant="outlined"
+                                rows="4"
+                                className={classes.textField} type="text" 
                                 onChange={this.handleChange} />
-                        <Button size="small" variant="contained" color="primary" type="submit">Submit Comments</Button>
+                        <br/><br/>
+                        <Button size="medium" variant="contained" color="primary" type="submit">Submit Comments</Button>
                         <br/>
                     </form>
 
@@ -76,4 +71,4 @@ class Comments extends Component {
     }
 }
 
-export default connect()(Comments);
+export default connect()(withStyles(styles)(Comments));

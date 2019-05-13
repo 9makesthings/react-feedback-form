@@ -15,6 +15,26 @@ import Admin from '../Admin/Admin';
 // Static component:
 import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
 
+// import materialUI
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import grey from '@material-ui/core/colors/grey';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: { 
+      light: '#b5ffff',
+      main: '#80d8ff',
+      dark: '#49a7cc',
+      contrastText: '#263238' }, 
+    secondary: { 
+      light: '#a4a4a4',
+      main: grey[600],
+      dark: '#49a7cc',
+      contrastText: '#263238'  }, // lightBlue A100 as hex
+  },
+  typography: { useNextVariants: true },
+});
+
 class App extends Component {
 
   submitFeedback = (feedback) => {
@@ -63,27 +83,28 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
-          <header className="App-header">
-            <h1 className="App-title">Feedback!</h1>
-            {/* <h4><i>Don't forget it!</i></h4> */}
-          </header>
-          <br/>
+        <MuiThemeProvider theme={theme} >
+          <div className="App">
+            <header className="App-header">
+              <h1 className="App-title">Feedback Form</h1>
+              {/* <h4><i>Don't forget it!</i></h4> */}
+            </header>
+            <br/>
 
-          <div>
-            {/* routes will go here... */}
-            <Route exact path ="/" component={Feeling} />
-            <Route path="/understanding" component={Understanding} />
-            <Route path="/support" component={Supported} />
-            <Route path="/comments" component={Comments} />
-            <Route path="/review" render={(props) => <ReviewFeedback {...props} submitFeedback={this.submitFeedback} />} />
-            <Route path="/success" component={Success} />
+            <div>
+              {/* routes will go here... */}
+              <Route exact path ="/" component={Feeling} />
+              <Route path="/understanding" component={Understanding} />
+              <Route path="/support" component={Supported} />
+              <Route path="/comments" component={Comments} />
+              <Route path="/review" render={(props) => <ReviewFeedback {...props} submitFeedback={this.submitFeedback} />} />
+              <Route path="/success" component={Success} />
 
-            <Route path="/admin" render={(props) => <Admin {...props} getFeedback={this.getFeedback}/>}  />
+              <Route path="/admin" render={(props) => <Admin {...props} getFeedback={this.getFeedback}/>}  />
+            </div>
+
           </div>
-
-
-        </div>
+        </MuiThemeProvider>
       </Router>
     );
   }

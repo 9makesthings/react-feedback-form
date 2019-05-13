@@ -1,46 +1,67 @@
 .App {
   text-align: center;
   background-color: #e4e4e4;
-  padding-bottom: 100px;
+  padding-bottom: 300px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .App-header {
-  background-color: #757575;
+  background-color: #0093c4;
   min-height: 70px;
-  padding: 20px;
+  padding: 1px;
   color: white;
 }
 
-/* .App-title {
-  font-size: 1.5em;
-} */
+.App-title {
+  font-size: 3.4em;
+  margin-top: 40px;
+}
 
 .App-intro {
   font-size: large;
 }
 
 .card {
-  width: 80%;
+  width: 60%;
   margin: auto;
   padding: 20px;
   padding-top: 10px;
+  margin-top: 20px;
 }
 
 .adminTable {
   margin: auto;
-  width: 70%;
-  padding: 10px;
-  border-style: solid;
-  border-width: 2px;
-}
-
-.adminTable.thead.tr.th {
-  width: 100px;
-  /* fix this... */
+  /* border-style: solid;
+  border-width: 2px; */
 }
 
 .reviewTable {
   margin: auto;
   max-width: 300px;
+}
+
+.material-icons.large { 
+  font-size: 36px; 
+}
+
+.deleteButton:hover {
+  color: rgb(185, 49, 49);
+}
+
+.scale {
+  display: inline-flex;
+  align-content: center;
+  margin: 20px 0;
+}
+
+.radio {
+  width: 300px;
+}
+
+
+.comments {
+  width: 600px;
+  height: 100px;
+  margin: 15px;
+  margin-bottom: 20px;
 }
